@@ -1,0 +1,10 @@
+# Node
+firstproject/node_modules/
+*.log
+
+# Environment files
+.env
+
+# OS / editor
+.DS_Store
+.vscode/
