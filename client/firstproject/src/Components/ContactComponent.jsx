@@ -21,7 +21,7 @@ const ContactComponent = (props) => {
         <input type="text" name="Nickname" id="nickname" placeholder="fill nickname" onChange = { validateNickName } />
             <button onClick={submitBtn}  >  Click here!</button>
             <h1 className = {styles.btn} > {firstname} </h1>
-            <h2>  { naeem} </h2>
+            <h2>  { naeem} - {props.msg}</h2>
 
 
 
