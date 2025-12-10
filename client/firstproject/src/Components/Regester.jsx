@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import './useAnas';
 const Regester = () => {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
@@ -9,6 +10,7 @@ const Regester = () => {
     const [Eerror, setEerror] = useState(false)
     const [Perror, setPerror] = useState(false)
 
+    //const [ printLastnameError] = useAnas();
 
     const handleFname = (e) => {
         if (e.target.value.length < 2) {

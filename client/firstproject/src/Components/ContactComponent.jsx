@@ -2,7 +2,11 @@
 import React, {useState} from "react";
 import styles from '../css/style.module.css'
 
+
 const ContactComponent = (props) => {
+
+
+   
 
     const { fname: firstname } = props
 

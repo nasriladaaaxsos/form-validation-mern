@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const About = (props)=>{
 
+     const { name} = useParams();
     const [ fruits, Setfruits] = useState( [ "Apple" , "Orange" , "Lemon"])
     return (
         <>
@@ -15,6 +17,7 @@ const About = (props)=>{
             }
             
         </ul>
+        <h1> my name is {name} </h1>
         </>
     );
 }
