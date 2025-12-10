@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const About = (props)=>{
 
-     const { name} = useParams();
+    const { name} = useParams();
     const [ fruits, Setfruits] = useState( [ "Apple" , "Orange" , "Lemon"])
     return (
         <>

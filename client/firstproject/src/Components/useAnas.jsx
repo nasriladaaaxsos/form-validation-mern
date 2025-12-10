@@ -1,17 +1,33 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 
 
 const useAnas = () => {
 
-    const [myID, setID] = useState(12)
+    const [Ferror, setFerror] = useState(false)
+    const [Lerror, setLerror] = useState(false)
+    const [Eerror, setEerror] = useState(false)
+    const [Perror, setPerror] = useState(false)
 
-    function printLastnameError() {
-        return "this should be more than 2";
+    //const [myID, setID] = useState(12)
+
+    const validateFname = (value) => {
+        if (value.length < 2) {
+            setFerror(true)
+        }
+        else {
+            setFerror(false)
+            //setFname(e.target.value);
+        }
     }
+
+    // Return specific error message
+    const firstnameErrorMsg = () => {
+        return Ferror ? "First name should be more than 2 characters" : "";
+    };
 
 
     return (
-        { myID, printLastnameError }
+        { validateFname, firstnameErrorMsg}
     )
 
 }

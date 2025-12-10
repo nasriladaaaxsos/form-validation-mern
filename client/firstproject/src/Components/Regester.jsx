@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-//import './useAnas';
+import useAnas from "./useAnas";
+
 const Regester = () => {
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [Ferror, setFerror] = useState(false)
+    //const [Ferror, setFerror] = useState(false)
     const [Lerror, setLerror] = useState(false)
     const [Eerror, setEerror] = useState(false)
     const [Perror, setPerror] = useState(false)
 
-    //const [ printLastnameError] = useAnas();
+    const {validateFname, firstnameErrorMsg } = useAnas();
 
     const handleFname = (e) => {
-        if (e.target.value.length < 2) {
-            setFerror(true)
-        }
-        else {
-            setFerror(false)
-            setFname(e.target.value);
-        }
+        const value =  e.target.value;
+        validateFname(value);
+        setFname(value);
     }
 
     const handleLname = (e) => {
@@ -58,9 +55,6 @@ const Regester = () => {
 
     }
 
-    const firstNameErrorMsg = () => {
-        return Ferror ? "this should be more than 2" : "";
-    }
 
     const lastNameErrorMsg = () => {
         return Lerror ? "this should be more than 2" : "";
@@ -79,7 +73,7 @@ const Regester = () => {
             <form onSubmit={(e) => { createUser }}  >
                 <label >first name</label>
                 <input type="text" name="firstname" placeholder="first name" onChange={handleFname} />
-                <h3>{firstNameErrorMsg()}</h3>
+                <h3>{firstnameErrorMsg()}</h3>
                 <br />
                 <label >last name</label>
                 <input type="text" name="lastname" placeholder="last name" onChange={handleLname} />
