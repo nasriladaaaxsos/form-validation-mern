@@ -1,5 +1,6 @@
 # Node
 firstproject/node_modules/
+node_modules/
 *.log
 
 # Environment files
