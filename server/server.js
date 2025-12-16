@@ -1,38 +1,18 @@
+const mongoose = require('mongoose');
 
 const express = require("express")
-
 const app = express()
+require('dotenv').config();
 
-const port = 8000
+const port = process.env.PORT;
 
+require("./config/mongoose.config");
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
 
-//API
-const users = [
-    { firstName: "Reimu",  lastName: "Hakurei" , Id : "1111"   },
-    { firstName: "Marisa", lastName: "Kirisame" , Id: "2222"  },
-    { firstName: "Sanae",  lastName: "Kochiya" , Id : "33333"   },
-    { firstName: "Sakuya", lastName: "Izayoi" , Id : "44444"    },
-    { firstName: "Momiji", lastName: "Inubashiri" , Id : "55555" }
-];
+const AllMyUserRoutes = require("./routes/user.routes");
 
-app.get( "/api/user" ,  ( req , res ) =>{
-
-    
-        res.json( { firstname : "EzzEddin" }    );
-
-}   );
-
-
-app.post("/add/user" , (req , res) =>{
-
-
-    //req.body
-    users.push( req.body )
-    res.json( { statusCode : "Ok"}  )
-}   );
-
+AllMyUserRoutes(app);
 
 
 app.listen(port, () => console.log('Listening on port 8000'));
