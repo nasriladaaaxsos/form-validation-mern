@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useNavigate } from "react";
 import useAnas from "./useAnas";
+import axios from "axios";
 
 const Regester = () => {
     const [fname, setFname] = useState("");
@@ -11,10 +12,11 @@ const Regester = () => {
     const [Eerror, setEerror] = useState(false)
     const [Perror, setPerror] = useState(false)
 
-    const {validateFname, firstnameErrorMsg } = useAnas();
+    const { validateFname, firstnameErrorMsg } = useAnas();
+    //const navigate = useNavigate();
 
     const handleFname = (e) => {
-        const value =  e.target.value;
+        const value = e.target.value;
         validateFname(value);
         setFname(value);
     }
@@ -52,6 +54,16 @@ const Regester = () => {
     }
     const createUser = (e) => {
         e.prevenDefault();
+        const user = { name: fname, age: 0 }
+        axios.post("http://127.0.0.1:8000/api/create", user)
+
+            .then(respone => {
+                console.log(respone)
+                //navigate("/")
+            }
+            )
+            .catch(err => console.log(err))
+
 
     }
 
@@ -81,7 +93,7 @@ const Regester = () => {
 
                 <br />
                 <label >email</label>
-                <input type="email" name="email" placeholder="email"  onChange={handleEmail} />
+                <input type="email" name="email" placeholder="email" onChange={handleEmail} />
                 <h3>{emailNameErrorMsg()}</h3>
                 <br />
                 <label >password</label>
